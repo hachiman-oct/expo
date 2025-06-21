@@ -38,11 +38,33 @@ def create_page(row):
     }
     notion.pages.create(parent={"database_id": DATABASE_ID}, properties=properties)
 
+def get_existing_dates():
+    existing_dates = set()
+    query = {
+        "database_id": DATABASE_ID,
+        "page_size": 100,
+    }
+    while True:
+        response = notion.databases.query(**query)
+        for result in response["results"]:
+            date_property = result["properties"].get("date", {})
+            if date_property and date_property.get("date"):
+                existing_dates.add(date_property["date"]["start"])
+        if response.get("has_more"):
+            query["start_cursor"] = response["next_cursor"]
+        else:
+            break
+    return existing_dates
+
 def main():
     rows = read_csv(target_csv)
+    existing_dates = get_existing_dates()
     for row in rows:
-        create_page(row)
-        print(f"Added: {row['date']}")
+        if row["date"] not in existing_dates:
+            create_page(row)
+            print(f"Added: {row['date']}")
+        else:
+            print(f"Skipped (already exists): {row['date']}")
 
 if __name__ == "__main__":
     main()
