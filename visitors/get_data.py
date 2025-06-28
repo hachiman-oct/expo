@@ -34,7 +34,7 @@ links = find_visitors_links(max_pages=5)
 for link in links:
     print(f"Found link: {link}")
     visitor_data = extract_visitor_table(link)
-    result = save_to_csv(visitor_data, "expo_visitors.csv")
+    result = save_to_csv(visitor_data, "visitors/expo_visitors.csv")
     if result == "already_written":
         print("already_written: 強制終了します")
         sys.exit()
