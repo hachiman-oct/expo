@@ -1,1 +1,7 @@
 __pycache__
+
+.vscode/
+
+*.css.map
+
+*.md

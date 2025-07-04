@@ -1,0 +1,182 @@
+/* Notion風 シンプル＆モダンなスタイル */
+$main-bg: #f7f6f3;
+$main-fg: #222;
+$container-bg: #fff;
+$border: #ececec;
+$shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+$link: #2d7ff9;
+$link-border: #b3d4fc;
+$toc-link: #555;
+$font-size: 1.2em;
+
+body {
+    font-family: 'Segoe UI', 'Noto Sans JP', 'Helvetica Neue', Arial, sans-serif;
+    background: $main-bg;
+    color: $main-fg;
+    margin: 0;
+    padding: 0 0 40px 0;
+    box-sizing: border-box;
+
+    @media (max-width: 600px) {
+        width: 100%;
+    }
+}
+
+.main-container {
+    max-width: 900px;
+    min-width: 500px;
+    margin: 48px auto;
+    padding: 32px 24px 48px;
+    background: $container-bg;
+    border-radius: 12px;
+    box-shadow: $shadow;
+    box-sizing: border-box;
+
+    // モバイル対応
+    @media (max-width: 600px) {
+        min-width: 100%;
+        padding: 1rem 1.5rem 2rem;
+        width: 100%;
+        margin: 1rem auto;
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 700;
+    margin-top: 2.5em;
+    margin-bottom: 0.7em;
+    line-height: 1.3;
+
+    @media (max-width: 600px) {
+        margin-top: 1.5em;
+        margin-bottom: 0.5em;
+    }
+}
+
+h1 {
+    font-size: 2.2em;
+    border-bottom: 2px solid $border;
+    padding-bottom: 0.2em;
+}
+
+h2 {
+    font-size: 1.5em;
+    border-left: 4px solid $border;
+    padding-left: 0.5em;
+    border-bottom: #222 2px solid;
+}
+
+h3 {
+    font-size: $font-size;
+    color: #6d6d6d;
+}
+
+ul,
+ol {
+    margin: 1em 0 1em 2em;
+    padding: 0;
+
+    li {
+        margin-bottom: 0.3em;
+    }
+}
+
+a {
+    color: $link;
+    text-decoration: none;
+    border-bottom: 1px solid $link-border;
+    transition: border 0.2s;
+
+    &:hover {
+        border-bottom: 2px solid $link;
+    }
+}
+
+blockquote {
+    background: #f3f3f3;
+    border-left: 4px solid #e0e0e0;
+    margin: 1.5em 0;
+    padding: 0.8em 1.2em;
+    color: #555;
+    font-style: italic;
+}
+
+code,
+pre {
+    background: #f4f4f4;
+    border-radius: 4px;
+    font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace;
+}
+
+code {
+    padding: 0.2em 0.4em;
+    font-size: 0.95em;
+}
+
+pre {
+    padding: 1em;
+    overflow-x: auto;
+}
+
+img {
+    max-width: 100%;
+    border-radius: 6px;
+    margin: 1em 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+hr {
+    border: none;
+    border-top: 1px solid $border;
+    margin: 2em 0;
+}
+
+/* 目次風リスト */
+.toc {
+    list-style: none;
+    padding-left: 0;
+
+    ul {
+        list-style: none;
+        padding-left: 0;
+    }
+
+    li {
+        margin: 0.3em 0;
+    }
+
+    a {
+        color: $toc-link;
+        border: none;
+        font-weight: 500;
+
+        &:hover {
+            color: $link;
+        }
+    }
+}
+
+/* セクション間の余白 */
+section,
+.section {
+    margin-bottom: 2.5em;
+}
+
+iframe {
+    border: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.svg-icon {
+    width: $font-size;
+    height: $font-size;
+    vertical-align: middle;
+    margin: 0;
+    padding-bottom: .2em;
+}
