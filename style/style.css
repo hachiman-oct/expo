@@ -31,7 +31,8 @@ footer {
   background-color: #333; /* 背景色 */
   color: white; /* 文字色 */
   text-align: center; /* テキストを中央寄せ */
-  padding: 10px 0; /* 上下のパディング */
+  padding-top: 10px; /* 上部のパディング */
+  padding-bottom: env(safe-area-inset-bottom); /* 安全領域の下
   box-sizing: border-box; /* パディングを幅に含める */
   z-index: 1000; /* 他の要素の上に表示 */
   height: 60px; /* フッターの高さ */
