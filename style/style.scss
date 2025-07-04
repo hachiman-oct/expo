@@ -1,0 +1,124 @@
+:root {
+    --font-family: 'Noto Sans JP', sans-serif;
+    --expo-blue: #0080FF;
+    --expo-red: #e60012;
+    --footer-font-size: 14px;
+    --footer-fg-color: #fff;
+    --footer-bg-color: #333;
+    --bg-color: #fff;
+    --fg-color: #333;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-color: #181A1B;
+        --fg-color: #fff;
+    }
+}
+
+html {
+    font-family: var(--font-family);
+    height: 100%;
+    box-sizing: border-box;
+    background-color: var(--bg-color);
+    color: var(--fg-color);
+}
+
+body {
+    margin: 0;
+    padding-bottom: 60px;
+    /* フッターの高さ分だけ下部にパディングを追加 */
+    padding-left: .5rem;
+    padding-right: .5rem;
+}
+
+header {
+
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding-top: env(safe-area-inset-top);
+    /* ヘッダーの高さとその他のパディングを調整 */
+    height: calc(50px + env(safe-area-inset-top));
+    /* 例えば、通常のヘッダーが50pxの場合 */
+    box-sizing: border-box;
+    /* パディングを含めて高さを計算 */
+}
+
+/* メインコンテンツはヘッダーの高さ分、上部にマージンを設定 */
+main {
+    margin-top: calc(50px + env(safe-area-inset-top));
+    /* ヘッダーの高さに合わせて調整 */
+    height: 1000px;
+}
+
+footer {
+    position: fixed;
+    /* ビューポートに固定 */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--footer-bg-color);
+    color: var(--footer-fg-color);
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: env(safe-area-inset-bottom);
+    /* 安全領域の下 */
+    box-sizing: border-box;
+    /* パディングを幅に含める */
+    z-index: 1000;
+    /* 他の要素の上に表示 */
+    height: 60px;
+    /* フッターの高さ */
+
+    nav {
+        ul {
+            list-style: none;
+            /* リストのマーカーを削除 */
+            padding: 0;
+            margin: 0;
+            display: flex;
+            /* ボタンを横並びにする */
+            justify-content: space-around;
+
+            a {
+                text-decoration: none;
+                color: var(--footer-fg-color);
+                padding: 8px 15px;
+
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 0.2em;
+                text-decoration: none;
+
+                font-size: var(--footer-font-size);
+
+                svg {
+                    width: 1em;
+                    height: 1em;
+                    display: block;
+
+                    path {
+                        fill: var(--footer-fg-color);
+                    }
+                }
+            }
+        }
+
+    }
+}
+
+#expo-map-img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.external-maps {
+    li {
+        margin: 10px 0;
+        /* 各リストアイテムの上下のマージン */
+    }
+}
