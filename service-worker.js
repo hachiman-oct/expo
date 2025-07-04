@@ -4,8 +4,15 @@ self.addEventListener('install', (event) => {
             return cache.addAll([
                 '/expo/',
                 '/expo/index.html',
+                '/expo/map.html',
+                '/expo/prep.html',
+                '/expo/others.html',
                 '/expo/manifest.json',
                 '/expo/style/style.css',
+                '/expo/src/map.webp',
+                '/expo/src/map-device.png',
+                '/expo/src/map-toilet.png',
+                '/expo/src/map-water.png',
             ]);
         })
     );

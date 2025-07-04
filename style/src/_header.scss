@@ -1,0 +1,11 @@
+header {
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding-top: env(safe-area-inset-top);
+    /* ヘッダーの高さとその他のパディングを調整 */
+    height: calc(50px + env(safe-area-inset-top));
+    /* 例えば、通常のヘッダーが50pxの場合 */
+    box-sizing: border-box;
+    /* パディングを含めて高さを計算 */
+}

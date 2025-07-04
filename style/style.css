@@ -16,20 +16,74 @@
     --fg-color: #fff;
   }
 }
-html {
-  font-family: var(--font-family);
-  height: 100%;
-  box-sizing: border-box;
-  background-color: var(--bg-color);
-  color: var(--fg-color);
+:root {
+  --useful-link-shadow-color: rgba(0, 0, 0, 0.3);
 }
 
-body {
-  margin: 0;
-  padding-bottom: 60px;
-  /* フッターの高さ分だけ下部にパディングを追加 */
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+@media (prefers-color-scheme: dark) {
+  :root {
+    --useful-link-shadow-color: rgba(0, 0, 0, 0.9);
+  }
+}
+.useful-links ul {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.2rem;
+  padding: 0;
+  margin: 1.5rem 0;
+  list-style: none;
+}
+
+.useful-links li {
+  background: var(--bg-color);
+  color: var(--fg-color);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px var(--useful-link-shadow-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 110px;
+  padding: 1.2rem 0.5rem;
+}
+
+.useful-links a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--expo-blue);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.85rem;
+  gap: 0.5em;
+  width: 100%;
+  height: 100%;
+}
+
+.useful-links svg {
+  width: 2.2em;
+  height: 2.2em;
+  margin-bottom: 0.3em;
+  fill: var(--expo-blue);
+}
+
+@media (max-width: 600px) {
+  .useful-links ul {
+    gap: 0.8rem;
+  }
+  .useful-links li {
+    min-height: 4rem;
+    padding: 0.8rem 0.3rem;
+  }
+}
+#expo-map-img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.external-maps li {
+  margin: 10px 0;
 }
 
 header {
@@ -42,13 +96,6 @@ header {
   /* 例えば、通常のヘッダーが50pxの場合 */
   box-sizing: border-box;
   /* パディングを含めて高さを計算 */
-}
-
-/* メインコンテンツはヘッダーの高さ分、上部にマージンを設定 */
-main {
-  margin-top: calc(50px + env(safe-area-inset-top));
-  /* ヘッダーの高さに合わせて調整 */
-  height: 1000px;
 }
 
 footer {
@@ -98,15 +145,26 @@ footer nav ul a svg path {
   fill: var(--footer-fg-color);
 }
 
-#expo-map-img {
-  position: relative;
-  width: 100%;
+html {
+  font-family: var(--font-family);
   height: 100%;
+  box-sizing: border-box;
+  background-color: var(--bg-color);
+  color: var(--fg-color);
 }
 
-.external-maps li {
-  margin: 10px 0;
-  /* 各リストアイテムの上下のマージン */
+body {
+  margin: 0;
+  padding-bottom: 60px;
+  /* フッターの高さ分だけ下部にパディングを追加 */
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+main {
+  margin-top: auto;
+  height: auto;
+  padding-bottom: 5rem;
 }
 
 /*# sourceMappingURL=style.css.map */

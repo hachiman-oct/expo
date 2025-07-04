@@ -1,0 +1,17 @@
+:root {
+    --font-family: 'Noto Sans JP', sans-serif;
+    --expo-blue: #0080FF;
+    --expo-red: #e60012;
+    --footer-font-size: 14px;
+    --footer-fg-color: #fff;
+    --footer-bg-color: #333;
+    --bg-color: #fff;
+    --fg-color: #333;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-color: #181A1B;
+        --fg-color: #fff;
+    }
+}

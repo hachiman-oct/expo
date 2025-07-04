@@ -1,0 +1,55 @@
+footer {
+    position: fixed;
+    /* ビューポートに固定 */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--footer-bg-color);
+    color: var(--footer-fg-color);
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: env(safe-area-inset-bottom);
+    /* 安全領域の下 */
+    z-index: 1000;
+    /* 他の要素の上に表示 */
+    height: 60px;
+    /* フッターの高さ */
+
+    nav {
+        ul {
+            list-style: none;
+            /* リストのマーカーを削除 */
+            padding: 0;
+            margin: 0;
+            display: flex;
+            /* ボタンを横並びにする */
+            justify-content: space-around;
+
+            a {
+                text-decoration: none;
+                color: var(--footer-fg-color);
+                padding: 8px 15px;
+
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 0.2em;
+                text-decoration: none;
+
+                font-size: var(--footer-font-size);
+
+                svg {
+                    width: 1em;
+                    height: 1em;
+                    display: block;
+
+                    path {
+                        fill: var(--footer-fg-color);
+                    }
+                }
+            }
+        }
+
+    }
+}
