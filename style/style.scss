@@ -3,6 +3,9 @@
 @use 'src/map';
 @use 'src/header';
 @use 'src/footer';
+@use 'src/prep';
+@use 'src/others';
+@use 'src/app';
 
 html {
     font-family: var(--font-family);
@@ -23,6 +26,19 @@ body {
 main {
     margin-top: auto;
     height: auto;
-    min-height: 900px;
+    min-height: 700px;
+    padding-top: 1rem;
     padding-bottom: 5rem;
+}
+
+.wallpaper {
+    width: 100vw;         // ビューポート幅に合わせる
+    max-width: 100%;      // 親要素をはみ出さない
+    height: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    opacity: var(--wallpaper-opacity); // 背景として薄く表示
+    object-fit: cover;    // 画像が引き伸ばされずにカバー
 }

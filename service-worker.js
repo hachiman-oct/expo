@@ -13,6 +13,7 @@ self.addEventListener('install', (event) => {
                 '/expo/src/map-device.png',
                 '/expo/src/map-toilet.png',
                 '/expo/src/map-water.png',
+                '/expo/src/wallpaper-ios.jpg',
             ]);
         })
     );

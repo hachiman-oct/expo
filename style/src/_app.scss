@@ -1,0 +1,31 @@
+.app-badge {
+    text-align: center;
+    margin-top: .8rem;
+    margin-bottom: .4rem;
+
+    a {
+        display: flex;
+        align-items: center; // 上下中央寄せ
+        justify-content: center; // 横並び中央寄せ
+        gap: .6em; // 画像間の隙間
+        overflow: hidden;
+        vertical-align: middle;
+
+        img.app-icon {
+            width: 70px;
+            height: 70px;
+            object-fit: contain;
+            -webkit-mask-image: var(--app-icon-mask);
+            mask-image: var(--app-icon-mask);
+            border-radius: 1rem;
+            border: .6px solid var(--border-color);
+        }
+
+        img.apple-badge {
+            width: 112px;
+            height: 41px;
+            object-fit: contain;
+            margin: 0;
+        }
+    }
+}

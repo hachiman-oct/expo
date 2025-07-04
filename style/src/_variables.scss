@@ -7,11 +7,17 @@
     --footer-bg-color: #333;
     --bg-color: #fff;
     --fg-color: #333;
+    --list-item-shadow-color: rgba(0, 0, 0, 0.3);
+    --border-color: #333;
+    --wallpaper-opacity: 0.125;
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
         --bg-color: #181A1B;
         --fg-color: #fff;
+        --list-item-shadow-color: rgba(0, 0, 0, 0.9);
+        --border-color: #444;
+        --wallpaper-opacity: 0.05;
     }
 }

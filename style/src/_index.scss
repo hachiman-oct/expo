@@ -1,62 +1,75 @@
-:root {
-    --useful-link-shadow-color: rgba(0, 0, 0, 0.3);
-}
-
-@media (prefers-color-scheme: dark) {
-    :root {
-        --useful-link-shadow-color: rgba(0, 0, 0, 0.9);
+.useful-links {
+    ul {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); // 2列均等
+        gap: 1.2rem;
+        padding: 0;
+        margin: 1.5rem 0;
+        list-style: none;
     }
-}
 
-.useful-links ul {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); // 2列均等
-    gap: 1.2rem;
-    padding: 0;
-    margin: 1.5rem 0;
-    list-style: none;
-}
+    li {
+        background: var(--bg-color);
+        color: var(--fg-color);
+        border-radius: 12px;
+        box-shadow: 0 2px 8px var(--list-item-shadow-color);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 110px;
+        padding: 1.2rem 0.5rem;
+    }
 
-.useful-links li {
-    background: var(--bg-color);
-    color: var(--fg-color);
-    border-radius: 12px;
-    box-shadow: 0 2px 8px var(--useful-link-shadow-color);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 110px;
-    padding: 1.2rem 0.5rem;
-}
+    a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: var(--expo-blue);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: .85rem;
+        gap: 0.5em;
+        width: 100%;
+        height: 100%;
+    }
 
-.useful-links a {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: var(--expo-blue);
-    text-decoration: none;
-    font-weight: 500;
-    font-size: .85rem;
-    gap: 0.5em;
-    width: 100%;
-    height: 100%;
-}
+    .icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+    }
 
-.useful-links svg {
-    width: 2.2em;
-    height: 2.2em;
-    margin-bottom: 0.3em;
-    fill: var(--expo-blue);
+    svg {
+        width: 2.2em;
+        height: 2.2em;
+        margin-bottom: 0.3em;
+        fill: var(--expo-blue);
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .text {
+        text-align: center;
+        margin-bottom: auto;
+    }
 }
 
 @media (max-width: 600px) {
-    .useful-links ul {
-        gap: 0.8rem;
-    }
+    .useful-links {
+        ul {
+            gap: 0.8rem;
+        }
 
-    .useful-links li {
-        min-height: 4rem;
-        padding: 0.8rem 0.3rem;
+        li {
+            min-height: 4rem;
+            padding: 0.8rem 0.3rem;
+        }
     }
 }
