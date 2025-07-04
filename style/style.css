@@ -63,8 +63,6 @@ footer {
   padding-top: 10px;
   padding-bottom: env(safe-area-inset-bottom);
   /* 安全領域の下 */
-  box-sizing: border-box;
-  /* パディングを幅に含める */
   z-index: 1000;
   /* 他の要素の上に表示 */
   height: 60px;
