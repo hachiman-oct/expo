@@ -86,3 +86,23 @@
         }
     }
 }
+
+.map-img-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3em;
+
+    img {
+        max-width: 100%;
+        border-radius: .2em;
+    }
+
+    .map-link {
+        margin-top: 0.2em;
+        font-size: 0.98em;
+        color: var(--expo-blue);
+        text-decoration-line: none;
+    }
+}
+

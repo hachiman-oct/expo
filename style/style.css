@@ -9,8 +9,9 @@
   --bg-color: #fff;
   --fg-color: #333;
   --list-item-shadow-color: rgba(0, 0, 0, 0.3);
-  --border-color: #333;
+  --app-icon-border-color: #9999;
   --wallpaper-opacity: 0.125;
+  --apple-badge-mask: url("/expo/src/apple-badge-mask.svg");
 }
 
 @media (prefers-color-scheme: dark) {
@@ -18,7 +19,7 @@
     --bg-color: #181A1B;
     --fg-color: #fff;
     --list-item-shadow-color: rgba(0, 0, 0, 0.9);
-    --border-color: #444;
+    --app-icon-border-color: #444;
     --wallpaper-opacity: 0.05;
   }
 }
@@ -164,6 +165,23 @@
   }
 }
 
+.map-img-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3em;
+}
+.map-img-link img {
+  max-width: 100%;
+  border-radius: 0.2em;
+}
+.map-img-link .map-link {
+  margin-top: 0.2em;
+  font-size: 0.98em;
+  color: var(--expo-blue);
+  text-decoration-line: none;
+}
+
 header {
   top: 0;
   left: 0;
@@ -295,21 +313,34 @@ footer nav ul a svg path {
   gap: 0.6em;
   overflow: hidden;
   vertical-align: middle;
+  pointer-events: none;
 }
 .app-badge a img.app-icon {
   width: 70px;
   height: 70px;
   object-fit: contain;
-  -webkit-mask-image: var(--app-icon-mask);
-  mask-image: var(--app-icon-mask);
   border-radius: 1rem;
-  border: 0.6px solid var(--border-color);
+  border: 0.6px solid var(--app-icon-border-color);
+  pointer-events: auto;
 }
 .app-badge a img.apple-badge {
   width: 112px;
   height: 41px;
   object-fit: contain;
   margin: 0;
+  pointer-events: auto;
+}
+
+#update-btn {
+  display: none;
+  bottom: 20px;
+  left: 20px;
+  padding: 10px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 html {

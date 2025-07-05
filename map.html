@@ -4,10 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Expo 2025 マップ</title>
+    <title>Expo Info - Map</title>
     <link rel="stylesheet" href="style/style.css">
-    <meta name="description" content="Expo 2025 Map by hachiman-oct">
-    <link rel="icon" href="/expo/favicon.ico">
+    <meta name="description" content="Expo 2025 Infomations by hachiman-oct">
+    <link rel="icon" href="/expo/icons/favicon.ico">
+    <link rel="icon" href="/expo/icons/icon.svg" type="image/svg+xml">
     <link rel="manifest" href="/expo/manifest.json">
     <link rel="apple-touch-icon" href="/expo/icons/icon-180.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -22,22 +23,34 @@
     <main>
         <section class="visitors-map">
             <h3>Visitorsのマップ</h3>
-            <img src="/expo/src/map.webp" alt="会場マップ" id="expo-map-img" loading="eager">
+            <div class="map-img-link">
+                <img src="/expo/src/map.webp" alt="会場マップ" id="expo-map-img" loading="eager">
+                <a href="/expo/src/map.webp" target="_blank" rel="noopener" class="map-link">拡大表示</a>
+            </div>
         </section>
         <section class="thematic-maps">
             <h3>特殊なマップ</h3>
             <ul>
                 <li>
-                    <p>トイレマップ</p>
-                    <img src="/expo/src/map-toilet.png" alt="トイレマップ" id="expo-map-img" loading="eager">
+                    <div class="map-img-link">
+                        <p>トイレマップ</p>
+                        <img src="/expo/src/map-toilet.png" alt="トイレマップ" loading="eager">
+                        <a href="/expo/src/map-toilet.png" target="_blank" rel="noopener" class="map-link">拡大表示</a>
+                    </div>
                 </li>
                 <li id="map-water">
-                    <p>給水機マップ</p>
-                    <img src="/expo/src/map-water.png" alt="給水機マップ" id="expo-map-img" loading="eager">
+                    <div class="map-img-link">
+                        <p>給水機マップ</p>
+                        <img src="/expo/src/map-water.png" alt="給水機マップ" loading="eager">
+                        <a href="/expo/src/map-water.png" target="_blank" rel="noopener" class="map-link">拡大表示</a>
+                    </div>
                 </li>
                 <li>
-                    <p>当日登録端末マップ</p>
-                    <img src="/expo/src/map-device.png" alt="当日登録端末マップ" id="expo-map-img" loading="eager">
+                    <div class="map-img-link">
+                        <p>当日登録端末マップ</p>
+                        <img src="/expo/src/map-device.png" alt="当日登録端末マップ" loading="eager">
+                        <a href="/expo/src/map-device.png" target="_blank" rel="noopener" class="map-link">拡大表示</a>
+                    </div>
                 </li>
             </ul>
         </section>

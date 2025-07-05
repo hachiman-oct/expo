@@ -6,6 +6,7 @@
 @use 'src/prep';
 @use 'src/others';
 @use 'src/app';
+@use 'src/update';
 
 html {
     font-family: var(--font-family);

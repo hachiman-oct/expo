@@ -8,8 +8,9 @@
     --bg-color: #fff;
     --fg-color: #333;
     --list-item-shadow-color: rgba(0, 0, 0, 0.3);
-    --border-color: #333;
+    --app-icon-border-color: #9999;
     --wallpaper-opacity: 0.125;
+    --apple-badge-mask: url('/expo/src/apple-badge-mask.svg');
 }
 
 @media (prefers-color-scheme: dark) {
@@ -17,7 +18,7 @@
         --bg-color: #181A1B;
         --fg-color: #fff;
         --list-item-shadow-color: rgba(0, 0, 0, 0.9);
-        --border-color: #444;
+        --app-icon-border-color: #444;
         --wallpaper-opacity: 0.05;
     }
 }

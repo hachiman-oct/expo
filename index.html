@@ -7,7 +7,8 @@
     <title>Expo Info - Home</title>
     <link rel="stylesheet" href="style/style.css">
     <meta name="description" content="Expo 2025 Infomations by hachiman-oct">
-    <link rel="icon" href="/expo/favicon.ico">
+    <link rel="icon" href="/expo/icons/favicon.ico">
+    <link rel="icon" href="/expo/icons/icon.svg" type="image/svg+xml">
     <link rel="manifest" href="/expo/manifest.json">
     <link rel="apple-touch-icon" href="/expo/icons/icon-180.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -20,6 +21,9 @@
     </header>
     <img src="src/wallpaper-ios.jpg" alt="Expo 2025 Wallpaper" class="wallpaper" loading="eager">
     <main>
+        <button id="update-btn">
+            新しいバージョンに更新する
+        </button>
         <section class="home-section">
             <div class="useful-links">
                 <h3>公式リンク</h3>
@@ -162,6 +166,18 @@
             </ul>
         </nav>
     </footer>
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/expo/sw.js')
+                .then((registration) => {
+                    console.log('Service Worker 登録成功:', registration);
+                })
+                .catch((error) => {
+                    console.log('Service Worker 登録失敗:', error);
+                });
+        }
+    </script>
 </body>
 
 </html>
