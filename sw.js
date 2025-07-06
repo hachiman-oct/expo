@@ -1,8 +1,8 @@
 self.addEventListener('install', (event) => {
     event.waitUntil(
-        caches.open('expo-cache-v0.1').then((cache) => {
+        caches.open('expo-cache-v0.0.1').then((cache) => {
+            console.log('Service Worker: Caching files');
             return cache.addAll([
-                '/expo/index.html',
                 '/expo/map.html',
                 '/expo/prep.html',
                 '/expo/others.html',
@@ -16,6 +16,8 @@ self.addEventListener('install', (event) => {
                 '/expo/src/map-water.png',
                 '/expo/src/wallpaper-ios.jpg',
             ]);
+        }).catch(err => {
+            console.error('Cache AddAll Failed:', err);
         })
     );
 });
@@ -28,8 +30,8 @@ self.addEventListener('fetch', (event) => {
     );
 });
 
-// self.addEventListener('message', (event) => {
-//   if (event.data && event.data.type === 'SKIP_WAITING') {
-//     self.skipWaiting();
-//   }
-// });
+self.addEventListener('message', (event) => {
+  if (event.data && event.data.type === 'SKIP_WAITING') {
+    self.skipWaiting();
+  }
+});

@@ -21,9 +21,8 @@
     </header>
     <img src="src/wallpaper-ios.jpg" alt="Expo 2025 Wallpaper" class="wallpaper" loading="eager">
     <main>
-        <button id="update-btn">
-            新しいバージョンに更新する
-        </button>
+        <button id="update-btn">新しいバージョンに更新する</button>
+        <button id="openSafari">Safariで開く</button>
         <section class="home-section">
             <div class="useful-links">
                 <h3>公式リンク</h3>
@@ -169,14 +168,20 @@
 
     <script>
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/expo/sw.js')
-                .then((registration) => {
-                    console.log('Service Worker 登録成功:', registration);
-                })
-                .catch((error) => {
-                    console.log('Service Worker 登録失敗:', error);
-                });
+            navigator.serviceWorker.register('./sw.js')
+                .then(reg => console.log('SW registered', reg))
+                .catch(err => console.error('SW registration failed', err));
         }
+
+        document.getElementById('openSafari').addEventListener('click', () => {
+            // 試験的なスキーム（iOS限定、動作は保証されない）
+            location.href = 'x-apple-system://https://ticket.expo2025.or.jp/myticket/';
+
+            // うまく動かない場合に備えて、通常のリンクを少し遅延して開く
+            setTimeout(() => {
+                window.open('https://ticket.expo2025.or.jp/myticket/', '_blank');
+            }, 500);
+        });
     </script>
 </body>
 

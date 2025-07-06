@@ -10,7 +10,7 @@ if ('serviceWorker' in navigator) {
             // 3. 新しいワーカーのインストールが完了したら
             newWorker.addEventListener('statechange', () => {
                 if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                    console.log('新しいService Workerがインストールされました。');
+                    console.log('New Service Worker installed and ready to activate.');
                     // 更新準備完了の通知を表示する（例: ボタンを表示）
                     const updateButton = document.getElementById('update-button');
                     updateButton.style.display = 'block';
