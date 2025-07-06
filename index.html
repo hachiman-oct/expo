@@ -23,6 +23,7 @@
     <main>
         <button id="update-btn">新しいバージョンに更新する</button>
         <button id="openSafari">Safariで開く</button>
+        <button id="shareBtn">共有でSafariへ</button>
         <section class="home-section">
             <div class="useful-links">
                 <h3>公式リンク</h3>
@@ -181,6 +182,23 @@
             setTimeout(() => {
                 window.open('https://ticket.expo2025.or.jp/myticket/', '_blank');
             }, 500);
+        });
+
+        document.getElementById('shareBtn').addEventListener('click', async () => {
+            if (navigator.share) {
+                try {
+                    await navigator.share({
+                        title: '外部リンクを開く',
+                        text: 'このリンクをSafariで開いてください。',
+                        url: 'https://example.com'
+                    });
+                    console.log('共有に成功');
+                } catch (error) {
+                    console.error('共有に失敗:', error);
+                }
+            } else {
+                alert('このブラウザはWeb Share APIに対応していません。');
+            }
         });
     </script>
 </body>
