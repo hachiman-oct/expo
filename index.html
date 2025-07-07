@@ -22,7 +22,6 @@
     <img src="src/wallpaper-ios.jpg" alt="Expo 2025 Wallpaper" class="wallpaper" loading="eager">
     <main>
         <button id="update-btn">新しいバージョンに更新する</button>
-        <button id="openSafari">Safariで開く</button>
         <button id="shareBtn">共有でSafariへ</button>
         <section class="home-section">
             <div class="useful-links">
@@ -169,20 +168,10 @@
 
     <script>
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('./sw.js')
+            navigator.serviceWorker.register('/expo/sw.js')
                 .then(reg => console.log('SW registered', reg))
                 .catch(err => console.error('SW registration failed', err));
         }
-
-        document.getElementById('openSafari').addEventListener('click', () => {
-            // 試験的なスキーム（iOS限定、動作は保証されない）
-            location.href = 'x-apple-system://https://ticket.expo2025.or.jp/myticket/';
-
-            // うまく動かない場合に備えて、通常のリンクを少し遅延して開く
-            setTimeout(() => {
-                window.open('https://ticket.expo2025.or.jp/myticket/', '_blank');
-            }, 500);
-        });
 
         document.getElementById('shareBtn').addEventListener('click', async () => {
             if (navigator.share) {
@@ -190,7 +179,7 @@
                     await navigator.share({
                         title: '外部リンクを開く',
                         text: 'このリンクをSafariで開いてください。',
-                        url: 'https://example.com'
+                        url: 'https://ticket.expo2025.or.jp/myticket/'
                     });
                     console.log('共有に成功');
                 } catch (error) {
@@ -201,6 +190,7 @@
             }
         });
     </script>
+    <script src="/expo/notify.js"></script>
 </body>
 
 </html>

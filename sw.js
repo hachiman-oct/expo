@@ -1,6 +1,6 @@
 self.addEventListener('install', (event) => {
     event.waitUntil(
-        caches.open('expo-cache-v0.0.1').then((cache) => {
+        caches.open('expo-cache-v0.0.2').then((cache) => {
             console.log('Service Worker: Caching files');
             return cache.addAll([
                 '/expo/map.html',
