@@ -1,5 +1,5 @@
 const CACHE_PREFIX = 'expo-pwa';
-const CACHE_VERSION = 'v0.0.3';
+const CACHE_VERSION = 'v0.0.4';
 const CACHE_NAME = `${CACHE_PREFIX}-${CACHE_VERSION}`;
 
 const urlsToCache = [
@@ -23,6 +23,7 @@ self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open(CACHE_NAME)
             .then((cache) => {
+                alert(`Service Worker: Caching files for offline use. Cache Name: ${CACHE_NAME}`);
                 return cache.addAll(urlsToCache);
             }).catch(err => {
                 console.error('Cache AddAll Failed:', err);
