@@ -1,5 +1,5 @@
 const CACHE_PREFIX = 'expo-pwa';
-const CACHE_VERSION = 'v0.0.2';
+const CACHE_VERSION = 'v0.0.3';
 const CACHE_NAME = `${CACHE_PREFIX}-${CACHE_VERSION}`;
 
 const urlsToCache = [
