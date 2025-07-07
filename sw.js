@@ -1,31 +1,47 @@
+const CACHE_PREFIX = 'expo-pwa';
+const CACHE_VERSION = 'v0.0.2';
+const CACHE_NAME = `${CACHE_PREFIX}-${CACHE_VERSION}`;
+
+const urlsToCache = [
+    '/expo/index.html',
+    '/expo/map.html',
+    '/expo/prep.html',
+    '/expo/others.html',
+    '/expo/manifest.json',
+    '/expo/notify.js',
+    '/expo/icons/favicon.ico',
+    '/expo/icons/icon-180.png',
+    '/expo/style/style.css',
+    '/expo/src/map.webp',
+    '/expo/src/map-device.png',
+    '/expo/src/map-toilet.png',
+    '/expo/src/map-water.png',
+    '/expo/src/wallpaper-ios.jpg',
+];
+
 self.addEventListener('install', (event) => {
     event.waitUntil(
-        caches.open('expo-cache-v0.0.2').then((cache) => {
-            console.log('Service Worker: Caching files');
-            return cache.addAll([
-                '/expo/map.html',
-                '/expo/prep.html',
-                '/expo/others.html',
-                '/expo/manifest.json',
-                '/expo/icons/favicon.ico',
-                '/expo/icons/icon-180.png',
-                '/expo/style/style.css',
-                '/expo/src/map.webp',
-                '/expo/src/map-device.png',
-                '/expo/src/map-toilet.png',
-                '/expo/src/map-water.png',
-                '/expo/src/wallpaper-ios.jpg',
-            ]);
-        }).catch(err => {
-            console.error('Cache AddAll Failed:', err);
-        })
+        caches.open(CACHE_NAME)
+            .then((cache) => {
+                return cache.addAll(urlsToCache);
+            }).catch(err => {
+                console.error('Cache AddAll Failed:', err);
+            })
     );
 });
 
-self.addEventListener('fetch', (event) => {
-    event.respondWith(
-        caches.match(event.request).then((response) => {
-            return response || fetch(event.request);
+self.addEventListener('activate', (event) => {
+    console.log('Service Worker: activate');
+    event.waitUntil(
+        caches.keys().then((cacheNames) => {
+            return Promise.all(
+                cacheNames.map((cacheName) => {
+                    if (cacheName.startsWith(CACHE_PREFIX) && cacheName !== CACHE_NAME) {
+                        console.log('Deleting old cache:', cacheName);
+                        return caches.delete(cacheName);
+                    }
+                })
+            );
         })
     );
 });
@@ -34,4 +50,16 @@ self.addEventListener('message', (event) => {
   if (event.data && event.data.type === 'SKIP_WAITING') {
     self.skipWaiting();
   }
+});
+
+self.addEventListener('fetch', (event) => {
+  event.respondWith(
+    caches.match(event.request)
+      .then((response) => {
+        if (response) {
+          return response;
+        }
+        return fetch(event.request);
+      })
+  );
 });

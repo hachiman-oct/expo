@@ -2,7 +2,7 @@ let newWorker;
 
 // 1. Service Workerを登録
 if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/sw.js').then(reg => {
+    navigator.serviceWorker.register('/expo/sw.js').then(reg => {
         // 2. 更新が検知された場合
         reg.addEventListener('updatefound', () => {
             newWorker = reg.installing;
@@ -12,7 +12,7 @@ if ('serviceWorker' in navigator) {
                 if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
                     console.log('New Service Worker installed and ready to activate.');
                     // 更新準備完了の通知を表示する（例: ボタンを表示）
-                    const updateButton = document.getElementById('update-button');
+                    const updateButton = document.getElementById('update-btn');
                     updateButton.style.display = 'block';
                 }
             });
@@ -26,6 +26,6 @@ if ('serviceWorker' in navigator) {
 }
 
 // 4. ユーザーが更新ボタンをクリックしたら、メッセージを送信
-document.getElementById('update-button').addEventListener('click', () => {
+document.getElementById('update-btn').addEventListener('click', () => {
     newWorker.postMessage({ type: 'SKIP_WAITING' });
 });
