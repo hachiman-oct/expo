@@ -1,5 +1,5 @@
 // sw.js
-const VERSION = '0.5.1';
+const VERSION = '0.5.2';
 
 const urlsToCache = [
     // '/expo/index.html',
