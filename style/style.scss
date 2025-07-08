@@ -6,7 +6,6 @@
 @use 'src/header';
 @use 'src/footer';
 @use 'src/app';
-@use 'src/update';
 @use 'src/list';
 
 html {
@@ -15,6 +14,7 @@ html {
     box-sizing: border-box;
     background-color: var(--bg-color);
     color: var(--fg-color);
+    scroll-padding-top: 5rem;
 }
 
 body {

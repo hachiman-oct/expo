@@ -38,6 +38,33 @@ header {
         min-width: 260px;
         box-shadow: 0 4px 24px var(--list-item-shadow-color);
         position: relative;
+
+        h3 {
+            font-size: 1.2em;
+            margin: 1em 0 1em 0;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            max-height: 60vh;
+            overflow-y: auto;
+
+            button {
+                display: block;
+                width: 100%;
+                padding: 0.8em 0.5em;
+                margin: 0.5em 0;
+                background: var(--expo-blue);
+                color: var(--fg-color);
+                border: none;
+                border-radius: 8px;
+                cursor: pointer;
+                font-size: 1em;
+                text-align: center;
+            }
+        }
     }
 
     .close-modal {
