@@ -12,7 +12,7 @@ clearCacheButton.addEventListener('click', async () => {
 
   // キャッシュAPIがブラウザで利用可能か確認
   if ('caches' in window) {
-    const cacheNamePrefix = 'expo-pwa-v'; // 対象のキャッシュ名の接頭辞
+    const cacheNamePrefix = 'expo-pwa-'; // 対象のキャッシュ名の接頭辞
 
     try {
       const keys = await caches.keys();
