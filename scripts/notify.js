@@ -24,7 +24,7 @@ window.addEventListener('load', () => {
 
     // 1. Service Workerを登録
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/expo/sw.js').then(reg => {
+        navigator.serviceWorker.register('/expo/sw.js', { updateViaCache: 'all' }).then(reg => {
             // ページ読み込み時に待機中のワーカーがいないかチェック
             if (reg.waiting) {
                 showUpdateButton(reg.waiting);
