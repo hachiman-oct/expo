@@ -1,4 +1,4 @@
-const VERSION = '0.2.4';
+const VERSION = '0.2.5';
 
 const urlsToCache = [
     '/expo/index.html',
