@@ -254,8 +254,8 @@ header h1 {
   width: 100%;
   padding: 0.8em 0.5em;
   margin: 0.5em 0;
-  background: var(--expo-gray);
-  color: var(--fg-color);
+  background: var(--expo-blue);
+  color: #fff;
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -301,6 +301,45 @@ header h1 {
   fill: var(--fg-color);
   width: 2em;
   height: 2em;
+}
+
+/* バージョン情報セクション */
+.version-info {
+  padding: 16px;
+  margin-bottom: 16px;
+}
+.version-info h3 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-size: 18px;
+  color: var(--fg-color);
+}
+.version-info .version-text {
+  margin: 0;
+  font-size: 16px;
+  color: var(--fg-color);
+}
+
+/* キャッシュクリアセクション */
+.clear-cache {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+.clear-cache #clear-cache-btn {
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--fg-color);
+  background-color: var(--expo-red);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.clear-cache #cache-status-msg {
+  font-size: 14px;
+  font-weight: 500;
 }
 
 footer {

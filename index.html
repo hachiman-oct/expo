@@ -18,7 +18,7 @@
 
 <body>
     <header>
-        <h1>Expo Info v0.2.8</h1>
+        <h1>Expo Info v0.2.9</h1>
         <button id="settings-btn" aria-label="バージョン・設定">
             <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px">
                 <path
@@ -29,14 +29,21 @@
     <div id="settings-modal" class="settings-modal" hidden>
         <div class="settings-modal-content">
             <button class="close-modal" aria-label="閉じる">&times;</button>
-            <h3>バージョン情報</h3>
-            <p class="version-text">読み込み中...</p>
-            <h3>高度なリンク</h3>
-            <ul>
-                <li><button class="open-outside" data-title="My Ticket"
-                        data-url="https://ticket.expo2025.or.jp/myticket/">My TicketのURL共有</button></li>
-                <!-- <li><button id="clear-cache-btn">キャッシュクリア</button></li> -->
-            </ul>
+            <div class="version-info">
+                <h3>バージョン情報</h3>
+                <p class="version-text">読み込み中...</p>
+            </div>
+            <div class="clear-cache">
+                <button id="clear-cache-btn">キャッシュクリア</button>
+                <span id="cache-status-msg"></span>
+            </div>
+            <div>
+                <h3>高度なリンク</h3>
+                <ul>
+                    <li><button class="open-outside" data-title="My Ticket"
+                            data-url="https://ticket.expo2025.or.jp/myticket/">My TicketのURL共有</button></li>
+                </ul>
+            </div>
         </div>
     </div>
     <img src="src/wallpaper-ios.jpg" alt="Expo 2025 Wallpaper" class="wallpaper" loading="eager">
@@ -205,6 +212,7 @@
     </script>
     <script src="/expo/scripts/notify.js"></script>
     <script src="/expo/scripts/index.js"></script>
+    <script src="/expo/scripts/clear-cache.js"></script>
 </body>
 
 </html>
