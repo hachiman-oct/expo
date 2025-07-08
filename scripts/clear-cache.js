@@ -23,18 +23,18 @@ clearCacheButton.addEventListener('click', async () => {
       await Promise.all(deletePromises);
 
       // 成功メッセージを表示
-      statusMessage.textContent = '✅ キャッシュをクリアしました。';
+      statusMessage.textContent = 'キャッシュをクリアしました。';
       statusMessage.style.color = 'green';
 
     } catch (error) {
       console.error('キャッシュのクリア中にエラーが発生しました:', error);
       // 失敗メッセージを表示
-      statusMessage.textContent = '❌ クリアに失敗しました。';
+      statusMessage.textContent = 'クリアに失敗しました。';
       statusMessage.style.color = 'red';
     }
   } else {
     // 非対応ブラウザ向けのメッセージ
-    statusMessage.textContent = '❌ このブラウザは対応していません。';
+    statusMessage.textContent = 'このブラウザは対応していません。';
     statusMessage.style.color = 'red';
   }
 
