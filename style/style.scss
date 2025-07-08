@@ -1,12 +1,13 @@
 @use 'src/variables';
 @use 'src/index';
 @use 'src/map';
-@use 'src/header';
-@use 'src/footer';
 @use 'src/prep';
 @use 'src/others';
+@use 'src/header';
+@use 'src/footer';
 @use 'src/app';
 @use 'src/update';
+@use 'src/list';
 
 html {
     font-family: var(--font-family);

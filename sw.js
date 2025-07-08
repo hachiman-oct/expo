@@ -1,6 +1,4 @@
-const CACHE_PREFIX = 'expo-pwa';
-const CACHE_VERSION = 'v0.0.7';
-const CACHE_NAME = `${CACHE_PREFIX}-${CACHE_VERSION}`;
+const VERSION = '0.1.5';
 
 const urlsToCache = [
     '/expo/index.html',
@@ -8,7 +6,6 @@ const urlsToCache = [
     '/expo/prep.html',
     '/expo/others.html',
     '/expo/manifest.json',
-    '/expo/notify.js',
     '/expo/icons/favicon.ico',
     '/expo/icons/icon-180.png',
     '/expo/style/style.css',
@@ -17,7 +14,12 @@ const urlsToCache = [
     '/expo/src/map-toilet.png',
     '/expo/src/map-water.png',
     '/expo/src/wallpaper-ios.jpg',
+    '/expo/scripts/notify.js',
+    '/expo/scripts/index.js',
 ];
+
+const CACHE_PREFIX = 'expo-pwa';
+const CACHE_NAME = `${CACHE_PREFIX}-${VERSION}`;
 
 self.addEventListener('install', (event) => {
     event.waitUntil(
@@ -63,4 +65,11 @@ self.addEventListener('fetch', (event) => {
         return fetch(event.request);
       })
   );
+});
+
+self.addEventListener('message', (event) => {
+    if (event.data && event.data.command === 'getVersion') {
+        // メッセージを送信したクライアントに返信する
+        event.source.postMessage({ version: VERSION });
+    }
 });

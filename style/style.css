@@ -7,6 +7,7 @@
   --footer-fg-color: #fff;
   --footer-bg-color: #333;
   --bg-color: #fff;
+  --bg-color-tp: #ffffff7f;
   --fg-color: #333;
   --list-item-shadow-color: rgba(0, 0, 0, 0.3);
   --app-icon-border-color: #9999;
@@ -17,6 +18,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --bg-color: #181A1B;
+    --bg-color-tp: #181a1b7f;
     --fg-color: #fff;
     --list-item-shadow-color: rgba(0, 0, 0, 0.9);
     --app-icon-border-color: #444;
@@ -182,65 +184,6 @@
   text-decoration-line: none;
 }
 
-header {
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding-top: env(safe-area-inset-top);
-  /* ヘッダーの高さとその他のパディングを調整 */
-  height: calc(50px + env(safe-area-inset-top));
-  /* 例えば、通常のヘッダーが50pxの場合 */
-  box-sizing: border-box;
-  /* パディングを含めて高さを計算 */
-}
-
-footer {
-  position: fixed;
-  /* ビューポートに固定 */
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background-color: var(--footer-bg-color);
-  color: var(--footer-fg-color);
-  text-align: center;
-  padding-top: 10px;
-  padding-bottom: env(safe-area-inset-bottom);
-  /* 安全領域の下 */
-  z-index: 1000;
-  /* 他の要素の上に表示 */
-  height: 60px;
-  /* フッターの高さ */
-}
-footer nav ul {
-  list-style: none;
-  /* リストのマーカーを削除 */
-  padding: 0;
-  margin: 0;
-  display: flex;
-  /* ボタンを横並びにする */
-  justify-content: space-around;
-}
-footer nav ul a {
-  text-decoration: none;
-  color: var(--footer-fg-color);
-  padding: 8px 15px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.2em;
-  text-decoration: none;
-  font-size: var(--footer-font-size);
-}
-footer nav ul a svg {
-  width: 1em;
-  height: 1em;
-  display: block;
-}
-footer nav ul a svg path {
-  fill: var(--footer-fg-color);
-}
-
 .prep-section {
   margin: 2.5rem auto 2rem auto;
   max-width: 700px;
@@ -301,6 +244,133 @@ footer nav ul a svg path {
     padding: 0.7em 0.5em 0.5em 0.5em;
   }
 }
+header {
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding-top: env(safe-area-inset-top);
+  /* ヘッダーの高さとその他のパディングを調整 */
+  height: calc(50px + env(safe-area-inset-top));
+  /* 例えば、通常のヘッダーが50pxの場合 */
+  box-sizing: border-box;
+  /* パディングを含めて高さを計算 */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 0.5em;
+}
+header h1 {
+  color: var(--fg-color);
+}
+
+.settings-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--bg-color-tp);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.settings-modal .settings-modal-content {
+  background: var(--bg-color);
+  border-radius: 12px;
+  padding: 2em 1.5em;
+  min-width: 260px;
+  box-shadow: 0 4px 24px var(--list-item-shadow-color);
+  position: relative;
+}
+.settings-modal .close-modal {
+  position: absolute;
+  top: 0.7em;
+  right: 1em;
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  cursor: pointer;
+  color: var(--fg-color);
+}
+
+.settings-modal[hidden] {
+  display: none !important;
+}
+
+.header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 0.5em;
+}
+
+#settings-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.3em 0.5em;
+  border-radius: 50%;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#settings-btn svg {
+  display: block;
+  fill: var(--fg-color);
+  width: 2em;
+  height: 2em;
+}
+
+footer {
+  position: fixed;
+  /* ビューポートに固定 */
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--footer-bg-color);
+  color: var(--footer-fg-color);
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: env(safe-area-inset-bottom);
+  /* 安全領域の下 */
+  z-index: 1000;
+  /* 他の要素の上に表示 */
+  height: 60px;
+  /* フッターの高さ */
+}
+footer nav ul {
+  list-style: none;
+  /* リストのマーカーを削除 */
+  padding: 0;
+  margin: 0;
+  display: flex;
+  /* ボタンを横並びにする */
+  justify-content: space-around;
+}
+footer nav ul a {
+  text-decoration: none;
+  color: var(--footer-fg-color);
+  padding: 8px 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2em;
+  text-decoration: none;
+  font-size: var(--footer-font-size);
+}
+footer nav ul a svg {
+  width: 1em;
+  height: 1em;
+  display: block;
+}
+footer nav ul a svg path {
+  fill: var(--footer-fg-color);
+}
+
 .app-badge {
   text-align: center;
   margin-top: 0.8rem;
@@ -341,6 +411,59 @@ footer nav ul a svg path {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.list-section {
+  margin: 2.5rem auto 2rem auto;
+  max-width: 700px;
+  background: var(--bg-color-tp);
+  border-radius: 16px;
+  box-shadow: 0 2px 16px var(--list-item-shadow-color);
+  padding: 1.2rem 0.5rem 1rem 0.5rem;
+}
+.list-section h2 {
+  color: var(--expo-blue, #0080FF);
+  font-size: 1.3rem;
+  margin-bottom: 1.2rem;
+  letter-spacing: 0.03em;
+  text-align: center;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background: var(--bg-color);
+}
+.list > li {
+  margin-bottom: 1.5em;
+  border-radius: 10px;
+  padding: 0.7em 0.5em 0.5em 0.5em;
+  box-shadow: 0 1px 6px var(--list-item-shadow-color);
+}
+.list > li strong {
+  font-weight: 600;
+  font-size: 1.07em;
+}
+.list > li ul,
+.list > li ol {
+  margin: 0.5em 0 0.5em 1.2em;
+  padding-left: 1.2em;
+}
+.list > li a {
+  color: var(--expo-blue, #0080FF);
+  text-decoration-line: none;
+  word-break: break-all;
+}
+.list .important {
+  color: #e60012;
+}
+
+.list-note {
+  display: block;
+  color: #888;
+  font-size: 0.97em;
+  margin-top: 0.2em;
 }
 
 html {

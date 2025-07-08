@@ -18,16 +18,34 @@
 
 <body>
     <header>
-        <h1>Expo Info v0.0.7</h1>
+        <h1>Expo Info</h1>
+        <button id="settings-btn" aria-label="バージョン・設定">
+            <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px">
+                <path
+                    d="M479.86-160Q460-160 446-174.14t-14-34Q432-228 446.14-242t34-14Q500-256 514-241.86t14 34Q528-188 513.86-174t-34 14Zm0-272Q460-432 446-446.14t-14-34Q432-500 446.14-514t34-14Q500-528 514-513.86t14 34Q528-460 513.86-446t-34 14Zm0-272Q460-704 446-718.14t-14-34Q432-772 446.14-786t34-14Q500-800 514-785.86t14 34Q528-732 513.86-718t-34 14Z" />
+            </svg>
+        </button>
     </header>
+    <div id="settings-modal" class="settings-modal" hidden>
+        <div class="settings-modal-content">
+            <button class="close-modal" aria-label="閉じる">&times;</button>
+            <h3>バージョン情報</h3>
+            <p class="version-text">読み込み中...</p>
+            <h3>高度なリンク</h3>
+            <ul>
+                <li><button class="open-outside" data-title="My Ticket"
+                        data-url="https://ticket.expo2025.or.jp/myticket/">My TicketのURL共有</button></li>
+                <!-- <li><button id="clear-cache-btn">キャッシュクリア</button></li> -->
+            </ul>
+        </div>
+    </div>
     <img src="src/wallpaper-ios.jpg" alt="Expo 2025 Wallpaper" class="wallpaper" loading="eager">
     <main>
         <button id="update-btn">新しいバージョンに更新する</button>
-        <button id="shareBtn">共有でSafariへ</button>
         <section class="home-section">
             <div class="useful-links">
                 <h3>公式リンク</h3>
-                <ul>
+                <ul class="expo-list">
                     <li>
                         <a href="https://ticket.expo2025.or.jp/myticket/" target="_blank" rel="noopener noreferrer">
                             <div class="text">マイチケットログイン</div>
@@ -173,25 +191,20 @@
                 .then(reg => console.log('SW registered', reg))
                 .catch(err => console.error('SW registration failed', err));
         }
+    </script>
+    <script type="module">
+        import { shareLink } from '/expo/scripts/share.js';
 
-        document.getElementById('shareBtn').addEventListener('click', async () => {
-            if (navigator.share) {
-                try {
-                    await navigator.share({
-                        title: '外部リンクを開く',
-                        text: 'このリンクをSafariで開いてください。',
-                        url: 'https://ticket.expo2025.or.jp/myticket/'
-                    });
-                    console.log('共有に成功');
-                } catch (error) {
-                    console.error('共有に失敗:', error);
-                }
-            } else {
-                alert('このブラウザはWeb Share APIに対応していません。');
-            }
+        document.querySelectorAll('button.open-outside[data-url]').forEach(button => {
+            button.addEventListener('click', () => {
+                const title = button.dataset.title;
+                const url = button.dataset.url;
+                shareLink({ title, url });
+            });
         });
     </script>
-    <script src="/expo/notify.js"></script>
+    <script src="/expo/scripts/notify.js"></script>
+    <script src="/expo/scripts/index.js"></script>
 </body>
 
 </html>

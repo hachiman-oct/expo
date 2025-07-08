@@ -6,6 +6,7 @@
     --footer-fg-color: #fff;
     --footer-bg-color: #333;
     --bg-color: #fff;
+    --bg-color-tp: #ffffff7f;
     --fg-color: #333;
     --list-item-shadow-color: rgba(0, 0, 0, 0.3);
     --app-icon-border-color: #9999;
@@ -16,6 +17,7 @@
 @media (prefers-color-scheme: dark) {
     :root {
         --bg-color: #181A1B;
+        --bg-color-tp: #181a1b7f;
         --fg-color: #fff;
         --list-item-shadow-color: rgba(0, 0, 0, 0.9);
         --app-icon-border-color: #444;
