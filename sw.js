@@ -1,8 +1,8 @@
 // sw.js
-const VERSION = '0.4.3';
+const VERSION = '0.5.0';
 
 const urlsToCache = [
-    '/expo/index.html',
+    // '/expo/index.html',
     '/expo/map.html',
     '/expo/prep.html',
     '/expo/others.html',
@@ -59,14 +59,36 @@ self.addEventListener('message', (event) => {
     }
 });
 
+// fetchイベントでリクエストに応じたキャッシュ戦略を実装
 self.addEventListener('fetch', (event) => {
-    event.respondWith(
-        caches.match(event.request)
-            .then((response) => {
-                if (response) {
+    // ページ遷移リクエスト(HTML)の場合
+    if (event.request.mode === 'navigate') {
+        event.respondWith(
+            // まずはネットワークから取得を試みる
+            fetch(event.request)
+                .then(response => {
+                    // 取得に成功したら、レスポンスをそのまま返す
                     return response;
-                }
-                return fetch(event.request);
-            })
+                })
+                .catch(() => {
+                    // ネットワークがオフラインなどで失敗した場合、キャッシュからindex.htmlを探して返す
+                    return caches.match('/expo/index.html');
+                })
+        );
+        return;
+    }
+
+    // CSS, JS, 画像などのアセットリクエストの場合
+    event.respondWith(
+        caches.match(event.request).then((response) => {
+            // キャッシュがあればそれを返し、なければネットワークから取得する
+            return response || fetch(event.request).then((fetchResponse) => {
+                // 新しく取得したアセットはキャッシュに保存しておく
+                return caches.open(CACHE_NAME).then((cache) => {
+                    cache.put(event.request, fetchResponse.clone());
+                    return fetchResponse;
+                });
+            });
+        })
     );
 });
