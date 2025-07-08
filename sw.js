@@ -1,5 +1,5 @@
 // sw.js
-const VERSION = '0.4.1';
+const VERSION = '0.4.2';
 
 const urlsToCache = [
     '/expo/index.html',
@@ -50,21 +50,23 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('message', (event) => {
-  if (event.data && event.data.type === 'SKIP_WAITING') {
-    self.skipWaiting();
-  } else if (event.data && event.data.command === 'getVersion') {
-    event.source.postMessage({ version: VERSION });
-  }
+    if (event.data && event.data.type === 'SKIP_WAITING') {
+        self.skipWaiting().then(() => {
+            return self.clients.claim();
+        });
+    } else if (event.data && event.data.command === 'getVersion') {
+        event.source.postMessage({ version: VERSION });
+    }
 });
 
 self.addEventListener('fetch', (event) => {
-  event.respondWith(
-    caches.match(event.request)
-      .then((response) => {
-        if (response) {
-          return response;
-        }
-        return fetch(event.request);
-      })
-  );
+    event.respondWith(
+        caches.match(event.request)
+            .then((response) => {
+                if (response) {
+                    return response;
+                }
+                return fetch(event.request);
+            })
+    );
 });
