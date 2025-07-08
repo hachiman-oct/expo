@@ -1,61 +1,66 @@
 // pwaのscripts/notify.js
 
-// ページのすべてのリソースが読み込まれた後に処理を開始
 window.addEventListener('load', () => {
     let newWorker;
+    const updateButton = document.getElementById('update-btn');
+    // ボタンがページに存在しない場合は何もしない
+    if (!updateButton) return;
 
-    // 更新ボタンを表示し、クリックイベントに備える関数
+    // 更新ボタンを表示する共通関数
     function showUpdateButton(worker) {
-        const updateButton = document.getElementById('update-btn');
-        if (updateButton) {
-            newWorker = worker;
-            updateButton.style.display = 'block';
-        }
+        newWorker = worker;
+        updateButton.style.display = 'block';
     }
 
-    // 新しいワーカーの状態を追跡する関数
+    // インストール中のワーカーを追跡する関数
     function trackInstalling(worker) {
         worker.addEventListener('statechange', () => {
+            // 'installed'状態は、新しいワーカーが待機中になったことを意味する
             if (worker.state === 'installed' && navigator.serviceWorker.controller) {
                 showUpdateButton(worker);
             }
         });
     }
 
-    // 1. Service Workerを登録
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('/expo/sw.js', { updateViaCache: 'all' }).then(reg => {
-            // ページ読み込み時に待機中のワーカーがいないかチェック
+            // 1. PWA起動時に待機中のワーカーがいるかチェック (更新を保留した場合のケース)
             if (reg.waiting) {
                 showUpdateButton(reg.waiting);
-                // return; を削除！
             }
 
-            // インストール中のワーカーがいる場合
+            // 2. 現在インストール中のワーカーがいるかチェック
             if (reg.installing) {
                 trackInstalling(reg.installing);
             }
 
-            // 新しい更新が検知された場合
+            // 3. PWAを開いている間に新しい更新が見つかった場合を監視
             reg.addEventListener('updatefound', () => {
                 trackInstalling(reg.installing);
             });
         });
 
-        // 新しいService Workerが有効化されたらページをリロード
+        // ★★★ 自動リロードの原因となっていたグローバルなリスナーを削除 ★★★
+        // navigator.serviceWorker.addEventListener('controllerchange', ...);
+    }
+
+    // ボタンのクリックイベントで、更新処理のすべてを制御する
+    updateButton.addEventListener('click', () => {
+        // 更新対象のワーカーが存在することを確認
+        if (!newWorker) return;
+
+        // このクリックイベント内でのみ、一時的にコントローラー変更を監視する
+        // これにより、ユーザーの意図したタイミングでのみリロードが実行される
         let refreshing;
         navigator.serviceWorker.addEventListener('controllerchange', () => {
             if (refreshing) return;
+            // 新しいワーカーが有効化されたら、ページをリロードして更新を適用
             window.location.reload();
             refreshing = true;
         });
-    }
 
-    // ユーザーが更新ボタンをクリックしたら、メッセージを送信し、リロードする
-    document.getElementById('update-btn').addEventListener('click', () => {
-        if (newWorker) {
-            newWorker.postMessage({ type: 'SKIP_WAITING' });
-            window.location.reload();
-        }
+        // 新しいワーカーに「待機をスキップして有効化せよ」というメッセージを送信
+        // これが上記の 'controllerchange' イベントの引き金となる
+        newWorker.postMessage({ type: 'SKIP_WAITING' });
     });
 });
