@@ -28,7 +28,7 @@ window.addEventListener('load', () => {
             // ページ読み込み時に待機中のワーカーがいないかチェック
             if (reg.waiting) {
                 showUpdateButton(reg.waiting);
-                return;
+                // return; を削除！
             }
 
             // インストール中のワーカーがいる場合
