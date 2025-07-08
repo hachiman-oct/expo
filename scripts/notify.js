@@ -51,10 +51,11 @@ window.addEventListener('load', () => {
         });
     }
 
-    // ユーザーが更新ボタンをクリックしたら、メッセージを送信
+    // ユーザーが更新ボタンをクリックしたら、メッセージを送信し、リロードする
     document.getElementById('update-btn').addEventListener('click', () => {
         if (newWorker) {
             newWorker.postMessage({ type: 'SKIP_WAITING' });
+            window.location.reload();
         }
     });
 });
