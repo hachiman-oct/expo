@@ -1,4 +1,4 @@
-const VERSION = '0.2.1';
+const VERSION = '0.2.4';
 
 const urlsToCache = [
     '/expo/index.html',
@@ -25,7 +25,6 @@ self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open(CACHE_NAME)
             .then((cache) => {
-                alert(`Service Worker: Caching files for offline use. Cache Name: ${CACHE_NAME}`);
                 return cache.addAll(urlsToCache);
             }).catch(err => {
                 console.error('Cache AddAll Failed:', err);
