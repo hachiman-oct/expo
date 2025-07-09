@@ -1,8 +1,9 @@
-// sw.js
-const VERSION = '0.7.1';
+// pwa/sw.js
+
+const VERSION = '0.8.0'; // 分かりやすくバージョンを更新
 
 const urlsToCache = [
-    // '/expo/index.html',
+    // ... キャッシュするファイルのリストは変更なし
     '/expo/map.html',
     '/expo/prep.html',
     '/expo/others.html',
@@ -22,17 +23,24 @@ const urlsToCache = [
 const CACHE_PREFIX = 'expo-pwa';
 const CACHE_NAME = `${CACHE_PREFIX}-${VERSION}`;
 
+// 1. installイベント: self.skipWaiting() を追加
 self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open(CACHE_NAME)
             .then((cache) => {
                 return cache.addAll(urlsToCache);
-            }).catch(err => {
-                console.error('Cache AddAll Failed:', err);
+            })
+            .then(() => {
+                // 新しいService Workerを即座に有効化する命令
+                return self.skipWaiting();
+            })
+            .catch(err => {
+                console.error('Cache AddAll or skipWaiting Failed:', err);
             })
     );
 });
 
+// 2. activateイベント: self.clients.claim() を追加
 self.addEventListener('activate', (event) => {
     console.log('Service Worker: activate');
     event.waitUntil(
@@ -45,45 +53,33 @@ self.addEventListener('activate', (event) => {
                     }
                 })
             );
+        }).then(() => {
+            // 有効化されたService Workerが、即座にクライアント(ページ)の制御権を得る命令
+            return self.clients.claim();
         })
     );
 });
 
+// 3. messageイベント: SKIP_WAITINGのリスナーは不要になったため削除
 self.addEventListener('message', (event) => {
-    if (event.data && event.data.type === 'SKIP_WAITING') {
-        self.skipWaiting().then(() => {
-            return self.clients.claim();
-        });
-    } else if (event.data && event.data.command === 'getVersion') {
+    // getVersionなど、他の目的で使う場合は残す
+    if (event.data && event.data.command === 'getVersion') {
         event.source.postMessage({ version: VERSION });
     }
 });
 
-// fetchイベントでリクエストに応じたキャッシュ戦略を実装
+// fetchイベントのリスナーは変更なし
 self.addEventListener('fetch', (event) => {
-    // ページ遷移リクエスト(HTML)の場合
+    // (中略) ... 以前のコードと同じ
     if (event.request.mode === 'navigate') {
         event.respondWith(
-            // まずはネットワークから取得を試みる
-            fetch(event.request)
-                .then(response => {
-                    // 取得に成功したら、レスポンスをそのまま返す
-                    return response;
-                })
-                .catch(() => {
-                    // ネットワークがオフラインなどで失敗した場合、キャッシュからindex.htmlを探して返す
-                    return caches.match('/expo/index.html');
-                })
+            fetch(event.request).catch(() => caches.match('/expo/index.html'))
         );
         return;
     }
-
-    // CSS, JS, 画像などのアセットリクエストの場合
     event.respondWith(
         caches.match(event.request).then((response) => {
-            // キャッシュがあればそれを返し、なければネットワークから取得する
             return response || fetch(event.request).then((fetchResponse) => {
-                // 新しく取得したアセットはキャッシュに保存しておく
                 return caches.open(CACHE_NAME).then((cache) => {
                     cache.put(event.request, fetchResponse.clone());
                     return fetchResponse;
