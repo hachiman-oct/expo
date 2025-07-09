@@ -4,4 +4,4 @@ __pycache__
 
 *.css.map
 
-test-assets/
+test/

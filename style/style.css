@@ -407,7 +407,7 @@ footer nav ul a svg path {
   width: 70px;
   height: 70px;
   object-fit: contain;
-  border-radius: 1rem;
+  border-radius: 22.7%;
   border: 0.6px solid var(--app-icon-border-color);
   pointer-events: auto;
 }

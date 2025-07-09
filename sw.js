@@ -1,6 +1,6 @@
 // pwa/sw.js
 
-const VERSION = '1.0.0'; // 分かりやすくバージョンを更新
+const VERSION = '1.0.1';
 
 const urlsToCache = [
     // ... キャッシュするファイルのリストは変更なし
