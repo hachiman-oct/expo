@@ -1,9 +1,8 @@
 // pwa/sw.js
 
-const VERSION = '1.0.1';
+const VERSION = '1.0.2';
 
 const urlsToCache = [
-    // ... キャッシュするファイルのリストは変更なし
     '/expo/map.html',
     '/expo/prep.html',
     '/expo/others.html',

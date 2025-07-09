@@ -456,7 +456,7 @@ footer nav ul a svg path {
   display: block;
   color: #888;
   font-size: 0.97em;
-  margin-top: 0.2em;
+  margin: 0.2em 0 0 0.5em;
 }
 
 html {
