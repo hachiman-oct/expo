@@ -71,18 +71,6 @@
   margin-bottom: auto;
 }
 
-#update-btn {
-  display: none;
-  bottom: 20px;
-  left: 20px;
-  padding: 10px;
-  background-color: #333;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
 #expo-map-img {
   position: relative;
   width: 100%;
@@ -305,7 +293,6 @@ header h1 {
 
 /* バージョン情報セクション */
 .version-info {
-  padding: 16px;
   margin-bottom: 16px;
 }
 .version-info h3 {
@@ -331,7 +318,7 @@ header h1 {
   padding: 8px 16px;
   font-size: 14px;
   font-weight: bold;
-  color: var(--fg-color);
+  color: #fff;
   background-color: var(--expo-red);
   border: none;
   border-radius: 5px;

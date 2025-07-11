@@ -111,45 +111,44 @@ header {
 
 /* バージョン情報セクション */
 .version-info {
-  padding: 16px;
-  margin-bottom: 16px; // 下に余白を追加してセクションを分離
+    margin-bottom: 16px; // 下に余白を追加してセクションを分離
 
-  h3 {
-    margin-top: 0;
-    margin-bottom: 8px;
-    font-size: 18px;
-    color: var(--fg-color);
-  }
+    h3 {
+        margin-top: 0;
+        margin-bottom: 8px;
+        font-size: 18px;
+        color: var(--fg-color);
+    }
 
-  .version-text {
-    margin: 0;
-    font-size: 16px;
-    color: var(--fg-color);
-  }
+    .version-text {
+        margin: 0;
+        font-size: 16px;
+        color: var(--fg-color);
+    }
 }
 
 /* キャッシュクリアセクション */
 .clear-cache {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 8px;  
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
 
-  // <button id="clear-cache-btn">
-  #clear-cache-btn {
-    padding: 8px 16px;
-    font-size: 14px;
-    font-weight: bold;
-    color: var(--fg-color);
-    background-color: var(--expo-red); // 危険な操作を示す赤色
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
+    // <button id="clear-cache-btn">
+    #clear-cache-btn {
+        padding: 8px 16px;
+        font-size: 14px;
+        font-weight: bold;
+        color: #fff;
+        background-color: var(--expo-red); // 危険な操作を示す赤色
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
 
-  // <span id="cache-status-msg">
-  #cache-status-msg {
-    font-size: 14px;
-    font-weight: 500;
-  }
+    // <span id="cache-status-msg">
+    #cache-status-msg {
+        font-size: 14px;
+        font-weight: 500;
+    }
 }
