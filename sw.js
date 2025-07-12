@@ -1,6 +1,6 @@
 // sw.js
 
-const VERSION = '3.0.0';
+const VERSION = '3.1.0';
 
 const urlsToCache = [
     '/expo/manifest.json',
