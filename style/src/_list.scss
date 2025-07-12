@@ -14,7 +14,11 @@
         text-align: center;
     }
 
-    >ul {
+    :where(ul.list) {
+        gap: 1rem;
+    }
+
+    ul.list {
         display: grid;
         list-style: none;
         padding: 0.5rem 0;
