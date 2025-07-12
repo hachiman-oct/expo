@@ -1,4 +1,4 @@
-header {
+header.header-main {
     top: 0;
     left: 0;
     width: 100%;
@@ -150,5 +150,40 @@ header {
     #cache-status-msg {
         font-size: 14px;
         font-weight: 500;
+    }
+}
+
+header.header-page {
+    position: relative; // .back-button の position: absolute の基準点
+    display: flex;
+    justify-content: center; // h1 を水平方向の中央に配置
+    align-items: center;     // h1 を垂直方向の中央に配置
+    padding: 0.5rem 0; // 上下の余白を少し設ける
+
+    .back-button {
+        position: absolute;
+        // 画面幅に影響されないよう、% ではなく rem や px を推奨
+        left: 0.1rem;
+        // display: flex を使うと中の svg を簡単に中央揃えできる
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        
+        text-decoration: none;
+        
+        // タップ領域を確保しつつ、見た目を整える
+        padding: 0.5rem;
+        border-radius: 50%; // 円形にして見栄えを良くする
+
+        svg {
+            width: 1.5rem; // h1 のフォントサイズと合わせるとバランスが良い
+            height: 1.5rem;
+            fill: var(--fg-color);
+        }
+    }
+
+    h1 {
+        font-size: 1.5rem;
+        margin: 0; // flexboxにより中央揃えされるため、不要なマージンをリセット
     }
 }

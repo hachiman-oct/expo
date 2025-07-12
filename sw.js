@@ -1,19 +1,20 @@
 // pwa/sw.js
 
-const VERSION = '1.1.0';
+const VERSION = '2.0.0';
 
 const urlsToCache = [
-    '/expo/map.html',
-    '/expo/prep.html',
-    '/expo/others.html',
+    '/expo/pages/map/',
+    '/expo/pages/prep/',
+    '/expo/pages/prep/apps/',
+    '/expo/pages/others/',
     '/expo/manifest.json',
     '/expo/icons/favicon.ico',
     '/expo/icons/icon-180.png',
     '/expo/style/style.css',
-    '/expo/src/map.webp',
-    '/expo/src/map-device.png',
-    '/expo/src/map-toilet.png',
-    '/expo/src/map-water.png',
+    '/expo/src/maps/map.webp',
+    '/expo/src/maps/map-device.png',
+    '/expo/src/maps/map-toilet.png',
+    '/expo/src/maps/map-water.png',
     '/expo/src/wallpaper-ios.jpg',
     '/expo/scripts/notify.js',
     '/expo/scripts/index.js',

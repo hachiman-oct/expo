@@ -24,3 +24,37 @@
         color: #e60012;
     }
 }
+
+.apps-list-wrapper .prep-list > li {
+    // ▼▼▼ CSS Grid を使ったレイアウト設定を追加 ▼▼▼
+    display: grid;
+    // カラム設定: 1列目(アイコン幅) 70px, 2列目(残り全部)
+    grid-template-columns: 70px 1fr;
+    // 行の高さはコンテンツに応じて自動調整
+    grid-template-rows: auto auto;
+    // グリッドエリアに名前を付ける
+    grid-template-areas:
+        "icon title"
+        "icon note";
+    // カラム間の隙間
+    column-gap: 1rem;
+    // グリッドアイテムを垂直方向の中央に配置
+    align-items: center;
+
+    // strongタグを"title"エリアに配置
+    > strong {
+        grid-area: title;
+    }
+
+    // .list-noteを"note"エリアに配置
+    .list-note {
+        grid-area: note;
+        margin: 0.2em 0 0 0; // Gridレイアウトのため左マージンをリセット
+    }
+
+    // .app-badgeを"icon"エリアに配置
+    .app-badge {
+        grid-area: icon;
+        margin: 0; // Gridレイアウトのためマージンをリセット
+    }
+}

@@ -4,32 +4,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Expo Info - Others</title>
-    <link rel="stylesheet" href="style/style.css">
+    <title>Expo Info - Home</title>
+    <link rel="stylesheet" href="/expo/style/style.css">
     <meta name="description" content="Expo 2025 Infomations by hachiman-oct">
     <link rel="icon" href="/expo/icons/favicon.ico">
     <link rel="icon" href="/expo/icons/icon.svg" type="image/svg+xml">
     <link rel="manifest" href="/expo/manifest.json">
     <link rel="apple-touch-icon" href="/expo/icons/icon-180.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 </head>
 
 <body>
-    <header>
-        <h1>その他</h1>
+    <header class="header-main">
+        <h1>マップ</h1>
     </header>
-    <img src="src/wallpaper-ios.jpg" alt="Expo 2025 Wallpaper" class="wallpaper" loading="eager">
+    <img src="/expo/src/wallpaper-ios.jpg" alt="Expo 2025 Wallpaper" class="wallpaper">
     <main>
-        <div>
-            <p>近日中にアップデートで追加</p>
-        </div>
+        <section class="visitors-map">
+            <h3>Visitorsのマップ</h3>
+            <div class="map-img-link">
+                <img src="/expo/src/maps/map.webp" alt="会場マップ" id="expo-map-img" loading="eager">
+                <a href="/expo/src/maps/map.webp" target="_blank" rel="noopener" class="map-link">拡大表示</a>
+            </div>
+        </section>
+        <section class="thematic-maps">
+            <h3>特殊なマップ</h3>
+            <ul>
+                <li>
+                    <div class="map-img-link">
+                        <p>トイレマップ</p>
+                        <img src="/expo/src/maps/map-toilet.png" alt="トイレマップ" loading="eager">
+                        <a href="/expo/src/maps/map-toilet.png" target="_blank" rel="noopener" class="map-link">拡大表示</a>
+                    </div>
+                </li>
+                <li id="map-water">
+                    <div class="map-img-link">
+                        <p>給水機マップ</p>
+                        <img src="/expo/src/maps/map-water.png" alt="給水機マップ" loading="eager">
+                        <a href="/expo/src/maps/map-water.png" target="_blank" rel="noopener" class="map-link">拡大表示</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="map-img-link">
+                        <p>当日登録端末マップ</p>
+                        <img src="/expo/src/maps/map-device.png" alt="当日登録端末マップ" loading="eager">
+                        <a href="/expo/src/maps/map-device.png" target="_blank" rel="noopener" class="map-link">拡大表示</a>
+                    </div>
+                </li>
+            </ul>
+        </section>
+        <section class="external-maps">
+            <h3>外部マップリンク</h3>
+            <ul>
+                <li>
+                    <a href="https://www.expo2025.or.jp/wp/wp-content/uploads/0517_JPMAP_NR_v11.png?utm_source=visitors&amp;utm_medium=visitors&amp;utm_campaign=banner"
+                        target="_blank" rel="noopener">
+                        予約なしパビリオンマップ(PDF)
+                    </a>
+                <li>
+                    <a href="https://www.expo2025.or.jp/wp/wp-content/themes/expo2025orjp_2022/assets/pdf/expo-map-index/map/map01_A3_color.pdf"
+                        target="_blank" rel="noopener">
+                        公式マップ(PDF)
+                    </a>
+                </li>
+                <li>
+                    <p>有志による非公式マップ(2025/07/03 更新)</p>
+                    <blockquote class="twitter-tweet">
+                        <p lang="ja" dir="ltr">
+                            万博のパビリオン巡りを主目的とした地図をVer2.10をコンビニ印刷できるよう登録<br>画像の2枚めのものが印刷できます<br><br>セブンイレブンのネットプリント<br>予約番号11615107<br>2025/07/10迄<br><br>地図は拡散、二次配布、改造等何でも可<br>※ただし個人使用の範囲でご利用ください<br><br>リプにうちわ・更新情報・PDF等
+                            <a href="https://t.co/4nyrJymmFC">pic.twitter.com/4nyrJymmFC</a></p>&mdash; つじ@万博7/10回目
+                        (@t_tsuji) <a
+                            href="https://twitter.com/t_tsuji/status/1940743307338101120?ref_src=twsrc%5Etfw">July 3,
+                            2025</a>
+                    </blockquote>
+                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </li>
+            </ul>
+        </section>
     </main>
+
     <footer>
         <nav>
             <ul>
                 <li>
-                    <a href="index.html">
+                    <a href="/expo/">
                         <div>ホーム</div>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
                             <!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
@@ -39,7 +99,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="map.html">
+                    <a href="/expo/pages/map/">
                         <div>マップ</div>
                         <svg xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 576 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
@@ -49,7 +109,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="prep.html">
+                    <a href="/expo/pages/prep/">
                         <div>準備</div>
                         <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px">
                             <path
@@ -58,7 +118,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="others.html">
+                    <a href="/expo/pages/others/">
                         <div>その他</div>
                         <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px">
                             <path
