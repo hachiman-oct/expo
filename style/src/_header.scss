@@ -157,8 +157,13 @@ header.header-page {
     position: relative; // .back-button の position: absolute の基準点
     display: flex;
     justify-content: center; // h1 を水平方向の中央に配置
-    align-items: center;     // h1 を垂直方向の中央に配置
+    align-items: center; // h1 を垂直方向の中央に配置
     padding: 0.5rem 0; // 上下の余白を少し設ける
+    padding-top: env(safe-area-inset-top);
+    /* ヘッダーの高さとその他のパディングを調整 */
+    height: calc(50px + env(safe-area-inset-top));
+    /* 例えば、通常のヘッダーが50pxの場合 */
+    box-sizing: border-box;
 
     .back-button {
         position: absolute;
@@ -168,9 +173,9 @@ header.header-page {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        
+
         text-decoration: none;
-        
+
         // タップ領域を確保しつつ、見た目を整える
         padding: 0.5rem;
         border-radius: 50%; // 円形にして見栄えを良くする

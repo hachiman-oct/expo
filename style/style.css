@@ -355,6 +355,11 @@ header.header-page {
   justify-content: center;
   align-items: center;
   padding: 0.5rem 0;
+  padding-top: env(safe-area-inset-top);
+  /* ヘッダーの高さとその他のパディングを調整 */
+  height: calc(50px + env(safe-area-inset-top));
+  /* 例えば、通常のヘッダーが50pxの場合 */
+  box-sizing: border-box;
 }
 header.header-page .back-button {
   position: absolute;

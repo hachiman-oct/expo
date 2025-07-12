@@ -1,6 +1,6 @@
 // pwa/sw.js
 
-const VERSION = '2.0.0';
+const VERSION = '2.0.1';
 
 const urlsToCache = [
     '/expo/pages/map/',
