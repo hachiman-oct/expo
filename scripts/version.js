@@ -1,4 +1,4 @@
-// pwaのscripts/notify.js
+// pwaのscripts/version.js
 
 window.addEventListener('load', () => {
     // Service Workerが利用可能かチェック

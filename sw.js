@@ -1,13 +1,13 @@
-// pwa/sw.js
+// sw.js
 
-const VERSION = '2.0.1';
+const VERSION = '2.0.2';
 
 const urlsToCache = [
-    '/expo/pages/map/',
-    '/expo/pages/prep/',
-    '/expo/pages/prep/apps/',
-    '/expo/pages/others/',
     '/expo/manifest.json',
+    '/expo/pages/map/index.html',
+    '/expo/pages/prep/index.html',
+    '/expo/pages/prep/apps/index.html',
+    '/expo/pages/others/index.html',
     '/expo/icons/favicon.ico',
     '/expo/icons/icon-180.png',
     '/expo/style/style.css',
@@ -16,7 +16,7 @@ const urlsToCache = [
     '/expo/src/maps/map-toilet.png',
     '/expo/src/maps/map-water.png',
     '/expo/src/wallpaper-ios.jpg',
-    '/expo/scripts/notify.js',
+    '/expo/scripts/version.js',
     '/expo/scripts/index.js',
 ];
 
@@ -32,6 +32,7 @@ self.addEventListener('install', (event) => {
             })
             .then(() => {
                 // 新しいService Workerを即座に有効化する命令
+                console.log('Service Worker: install complete, skipping waiting state');
                 return self.skipWaiting();
             })
             .catch(err => {
@@ -47,6 +48,7 @@ self.addEventListener('activate', (event) => {
         caches.keys().then((cacheNames) => {
             return Promise.all(
                 cacheNames.map((cacheName) => {
+                    console.log('Checking cache:', cacheName);
                     if (cacheName.startsWith(CACHE_PREFIX) && cacheName !== CACHE_NAME) {
                         console.log('Deleting old cache:', cacheName);
                         return caches.delete(cacheName);
